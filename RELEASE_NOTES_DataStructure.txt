@@ -1,7 +1,7 @@
 DataStructure RELEASE NOTES
 Date: 1 August 2019
 
-Description: Class Libary  Data Structures to manipulate large data in memory.
+Description: Class Libary Data Structures to manipulate large data in memory.
 
 .NET 4.7.1
 
@@ -12,11 +12,14 @@ DataStructure RELEASE V0.0 Alpha BUILD 1 Revision 1
 Date: 1 August 2019
 - All basic classes and UnitTests
 - Basic Page<T> class
-- Basic DataStor<T> class
+- Basic DataStore<T> class
 
 
-
-
+DataStructure RELEASE V0.0 Alpha BUILD 1 Revision 2
+Date: 1 August 2019
+- IPage<T>
+- Build out DataStore
+- Need to create a DataRow<T> with a rowID.
 
 
 ===== end =====
