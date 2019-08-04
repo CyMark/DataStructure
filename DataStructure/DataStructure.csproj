@@ -31,8 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AlgoLib">
-      <HintPath>..\..\..\..\Visual Studio 2013\Projects\AlgoLib\AlgoLib\bin\Debug\AlgoLib.dll</HintPath>
+    <Reference Include="AlgoLib, Version=1.2.9.263, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\AlgoLib\AlgoLib\bin\Debug\AlgoLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

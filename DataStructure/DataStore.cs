@@ -10,7 +10,7 @@ namespace DataStructure
     {
         LinkList<Page<T>> pages;
         Page<T> currentPage;
-        long RowID;
+        //long RowID;
 
         public DataStore()
         {
@@ -32,6 +32,8 @@ namespace DataStructure
                 return count;
             }
         }
+
+        public long RowID { get => RowID; private set => RowID = value; }
 
         public bool Add(T item) => Add(item, RowID++);
 

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataStructure
 {
-    public class DataRecord<T> : IComparable, IComparable<DataRecord<T>>
+    public class DataRecord<T> : IComparable, IComparable<DataRecord<T>>, IEquatable<DataRecord<T>>
     {
         public DataRecord(long recID, T data)
         {
@@ -35,6 +32,11 @@ namespace DataStructure
         {
             if (obj.GetType() != GetType()) { return -1; }
             return CompareTo(obj as DataRecord<T>);
+        }
+
+        public bool Equals(DataRecord<T> other)
+        {
+            return RowID == other.RowID && Record.Equals(other.Record);
         }
     }
 }
