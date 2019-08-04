@@ -6,13 +6,15 @@ namespace DataStructure
     /// <summary>
     /// Stores pages of Data
     /// </summary>
-    public class DataStore<T> : IPage<T>
+    public class DataStore<T> : IPage<T> where T : IComparable
     {
         LinkList<Page<T>> pages;
         Page<T> currentPage;
+        long RowID;
 
         public DataStore()
         {
+            RowID = 1;
             pages = new LinkList<Page<T>>();
         }
 
@@ -31,11 +33,13 @@ namespace DataStructure
             }
         }
 
-        public bool Add(T item)
-        {
-            if(pages.Count == 0) { pages.Add(new Page<T>(0)); currentPage = pages[0]; }
+        public bool Add(T item) => Add(item, RowID++);
 
-            if(!currentPage.IsPageFull) { currentPage.Add(item); }
+        public bool Add(T item, long nextRowID)
+        {
+            if(pages.Count == 0) { pages.Add(new Page<T>(1)); currentPage = pages[0]; }
+
+            if(!currentPage.IsPageFull) { currentPage.Add(item, nextRowID); }
 
             bool hasAdded = false;
             // sweep from first page to fill in deleted entries
@@ -43,7 +47,7 @@ namespace DataStructure
             {
                 if(!pages[n].IsPageFull)
                 {
-                    pages[n].Add(item);
+                    pages[n].Add(item, nextRowID);
                     hasAdded = true;
                     break;
                 }
@@ -53,24 +57,24 @@ namespace DataStructure
             {
                 Page<T> page = new Page<T>(pages.Count);
                 currentPage = page;
-                page.Add(item);
+                page.Add(item, nextRowID);
                 pages.Add(page);
             }
 
             return true;
         }
 
-        public void Delete(T item)
+        public void Delete(DataRecord<T> item)
         {
             throw new NotImplementedException();
         }
 
-        public T GetData(int idx)
+        public DataRecord<T> GetData(long rowID)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(T item, int idx)
+        public void Update(DataRecord<T> item)
         {
             throw new NotImplementedException();
         }

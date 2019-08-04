@@ -14,34 +14,60 @@ namespace UnitTestDataStrucruture
             Assert.AreEqual(0, page.Count);
             Assert.AreEqual(1, page.PageID);
 
-            string string1 = "Item #0";
-            page.Add(string1);
+            long rec = 1;
+            string string1 = "Item #1";
+            //DataRecord<string> record = new DataRecord<string>(rec++, string1);
+            page.Add(string1, rec++);
 
             Assert.AreEqual(1, page.Count);
-            Assert.AreEqual(string1, page[0]);
+            Assert.AreEqual(string1, page[1].Record);
 
-            page.Add("Item #1");
-            page.Update("Item #00", 0);
+            //DataRecord<string> record2 = new DataRecord<string>(rec++, "Item #1");
+            page.Add("Item #2", rec++);
             Assert.AreEqual(2, page.Count);
-            Assert.AreEqual("Item #00", page[0]);
+            Assert.AreEqual(2, page[2].RowID);
+            Assert.AreEqual("Item #2", page[2].Record);
 
-            page.Add("Item #2");
-            page.Delete("Item #1");
-
+            page.Update(new DataRecord<string>(1, "Item #00"));
             Assert.AreEqual(2, page.Count);
-            Assert.AreEqual("Item #2", page[1]);
+            Assert.AreEqual("Item #00", page[1].Record);
+            Assert.AreEqual(1, page[1].RowID);
+            
+            page.Add("Item #3", rec++);
+            Assert.AreEqual(3, page.Count);
 
+            char[] chs = new char[page[2].Record.Length];
+
+            for(int n = 0; n < page[2].Record.Length; n++)
+            {
+                chs[n] = page[2].Record[n];
+            }
+
+            string g = new string(chs);
+            Assert.AreEqual("Item #2", g);
+            Assert.AreEqual(2, page[2].RowID);
+            DataRecord<string> record2 = new DataRecord<string>(2, g);
+            
+            page.Delete(record2);
+            
+            Assert.AreEqual(2, page.Count);
+            //Assert.AreEqual(2, page[2].RowID);
+            // Assert.AreEqual("Item #2", page[2].Record);
+            /*
+            
+            
             Assert.IsFalse(page.IsPageFull);
-
+            
             // Load 10 000 items
             for (int n = 0; n < 80000; n++)
-            { page.Add($"Item #{n}"); }
+            { page.Add(new DataRecord<string>(rec++, $"Item #{n}")); }
 
             Assert.IsTrue(page.IsPageFull);
 
             Assert.AreEqual(8192, page.Count);
             
-            Assert.AreEqual("Item #3998", page[4000]);
+            Assert.AreEqual("Item #3998", page[4000].Record);
+            */
         }
     }
 }

@@ -22,4 +22,9 @@ Date: 1 August 2019
 - Need to create a DataRow<T> with a rowID.
 
 
+DataStructure RELEASE V0.0 Alpha BUILD 1 Revision 3
+Date: 3 August 2019
+- Introduce Record<T> as the PageEntry with inherent RowID
+
+
 ===== end =====
