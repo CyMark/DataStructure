@@ -7,7 +7,7 @@ namespace DataStructure
     /// <summary>
     /// Contains 8K objects of data
     /// </summary>
-    public class Page<T> : IPage<T>, IEquatable<Page<T>> where T : IComparable
+    public class Page<T> : IPage<T>, IEquatable<Page<T>>// where T : IComparable
     {
         private readonly LinkList<DataRecord<T>> items;
         const int MaxEntries = 8192;
@@ -121,9 +121,17 @@ namespace DataStructure
 
 
 
-        public LinkList<long> FindRecord(T data)
+        public LinkList<long> FindRecords(T data)
         {
             LinkList<long> results = new LinkList<long>();
+
+            for (int n = 0; n < Count; n++)
+            {
+                if (items[n].Record.Equals(data))
+                {
+                    results.Add(items[n].RowID);
+                }
+            }
 
             return results;
         }

@@ -101,5 +101,13 @@ namespace UnitTestDataStrucruture
 
             Assert.AreEqual(8197, page.Search("Item #8197n"));
         }
+
+        [TestMethod]
+        public void TestSearch()
+        {
+            Page<TestData> page = new Page<TestData>(1);
+        }
+
+
     }
 }

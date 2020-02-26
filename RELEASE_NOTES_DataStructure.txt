@@ -31,6 +31,10 @@ DataStructure RELEASE V0.0 Alpha BUILD 1 Revision 4
 Date: 4 August 2019
 - Fix AlgoLib - reference to new AlgoLib
 - UnitTest PageBasics seems to be working.
+- Some errors to resolve
+
+
+
 
 
 ===== end =====

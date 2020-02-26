@@ -3,7 +3,7 @@
 
 namespace DataStructure
 {
-    public interface IPage<T> where T : IComparable
+    public interface IPage<T> //where T : IComparable
     {
         int Count { get; }
         bool Add(T item, long nexRowID);

@@ -6,7 +6,7 @@ namespace DataStructure
     /// <summary>
     /// Stores pages of Data
     /// </summary>
-    public class DataStore<T> : IPage<T> where T : IComparable
+    public class DataStore<T> : IPage<T> //where T : IComparable
     {
         LinkList<Page<T>> pages;
         Page<T> currentPage;
